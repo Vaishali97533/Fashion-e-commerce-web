@@ -42,7 +42,7 @@ const Home = () => {
 
       
 <div className="py-20 px-4  bg-white">
-   <h2 className="text-3xl md:text-5xl font-serif italic  text-center mb-16">Most Popular</h2> 
+   <h2 className="text-3xl  md:text-5xl font-serif italic  text-center mb-6">Most Popular</h2> 
     <Product/>
     </div>
 

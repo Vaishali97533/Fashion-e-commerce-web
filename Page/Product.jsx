@@ -1,45 +1,52 @@
 import React from 'react';
+import { useGetAllProductsQuery } from '../src/server/api';
 
-const products = [
-  {
-    id: 1,
-    image: 'https://websitedemos.net/clothing-store-02/wp-content/uploads/sites/1447/2024/03/img-08-a-400x488.jpg',
-    category: 'Work & Office',
-    title: 'Timeless Classic Collection',
-    price: '$124.90',
-    sizes: ['XL', 'L', 'M', 'S', 'XS'],
-    colors: ['#000000', '#00a86b', '#ff0000', '#ffffff'],
-  },
-  {
-    id: 2,
-    image: 'https://websitedemos.net/clothing-store-02/wp-content/uploads/sites/1447/2024/03/img-06-a-black-400x488.jpg',
-    category: 'Casual',
-    title: 'Bohemian Rhapsody Attire',
-    price: '$145.50',
-    sizes: ['XL', 'L', 'M', 'S', 'XS'],
-    colors: ['#000000', '#00a86b', '#ff0000'],
-  },
-  {
-    id: 3,
-    image: 'https://websitedemos.net/clothing-store-02/wp-content/uploads/sites/1447/2024/03/img-05-a-white-400x488.jpg',
-    category: 'Evening Dresses',
-    title: 'Midnight Gala Maxi Dress',
-    price: '$175.00',
-    sizes: ['L', 'M', 'S', 'XS'],
-    colors: ['#000000', '#00a86b', '#ff0000', '#ffffff'],
-  },
-  {
-    id: 4,
-    image: 'https://websitedemos.net/clothing-store-02/wp-content/uploads/sites/1447/2024/03/img-01-a-400x488.jpg',
-    category: 'Casual',
-    title: 'Power Suit Ensemble',
-    price: '$125.50',
-    sizes: ['XL', 'L', 'M', 'S', 'XS'],
-    colors: ['#000000', '#00a86b', '#ff0000', '#ffffff'],
-  },
-];
+// const products = [
+//   {
+//     id: 1,
+//     image: 'https://websitedemos.net/clothing-store-02/wp-content/uploads/sites/1447/2024/03/img-08-a-400x488.jpg',
+//     category: 'Work & Office',
+//     title: 'Timeless Classic Collection',
+//     price: '$124.90',
+//     sizes: ['XL', 'L', 'M', 'S', 'XS'],
+//     colors: ['#000000', '#00a86b', '#ff0000', '#ffffff'],
+//   },
+//   {
+//     id: 2,
+//     image: 'https://websitedemos.net/clothing-store-02/wp-content/uploads/sites/1447/2024/03/img-06-a-black-400x488.jpg',
+//     category: 'Casual',
+//     title: 'Bohemian Rhapsody Attire',
+//     price: '$145.50',
+//     sizes: ['XL', 'L', 'M', 'S', 'XS'],
+//     colors: ['#000000', '#00a86b', '#ff0000'],
+//   },
+//   {
+//     id: 3,
+//     image: 'https://websitedemos.net/clothing-store-02/wp-content/uploads/sites/1447/2024/03/img-05-a-white-400x488.jpg',
+//     category: 'Evening Dresses',
+//     title: 'Midnight Gala Maxi Dress',
+//     price: '$175.00',
+//     sizes: ['L', 'M', 'S', 'XS'],
+//     colors: ['#000000', '#00a86b', '#ff0000', '#ffffff'],
+//   },
+//   {
+//     id: 4,
+//     image: 'https://websitedemos.net/clothing-store-02/wp-content/uploads/sites/1447/2024/03/img-01-a-400x488.jpg',
+//     category: 'Casual',
+//     title: 'Power Suit Ensemble',
+//     price: '$125.50',
+//     sizes: ['XL', 'L', 'M', 'S', 'XS'],
+//     colors: ['#000000', '#00a86b', '#ff0000', '#ffffff'],
+//   },
+// ];
 
 const Product = () => {
+
+  const {data:products, isLoading, isError} = useGetAllProductsQuery();
+  if (isLoading) return <div className="text-center py-10">Loading...</div>;
+  if (isError) return <div className="text-center py-10 text-red-500">Error loading products</div>;
+
+
   return (
     <div className="py-10 px-4 md:px-16 bg-white">
       {/* <h2 className="text-3xl md:text-5xl font-serif italic  text-center mb-16">Most Popular</h2> */}
